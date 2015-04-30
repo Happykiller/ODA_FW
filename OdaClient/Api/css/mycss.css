@@ -1,0 +1,23 @@
+.valide {
+    color : #04B404;
+} 
+.notValide {
+    color : #FF0000;
+}   
+.tips {
+    color : #a1a1a1;
+}
+.default {
+    color : #333333;
+}
+.dataTable_right{
+  text-align: right;
+}
+
+.dataTable_left{
+  text-align: left;
+}
+
+.dataTable_center{
+  text-align: center;
+}

@@ -1,0 +1,20 @@
+{
+    "name": "author/project",
+    "description": "My Project",
+    "type": "library",
+    ,"authors": [
+        {
+            "name": "Name",
+            "email": "myMail@dom.com",
+            "homepage": "http://mysite-perso.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+		"happykiller/oda_api": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "ProjectExemple\\": "php\class" }
+    }
+}

@@ -1,0 +1,1 @@
+python D:\..\www\API\install\Scripts\script_ODA_API.py D:\..\exemple.config.api.oda_noa.json update

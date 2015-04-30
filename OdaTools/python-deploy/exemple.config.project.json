@@ -1,0 +1,39 @@
+{
+    "pathToFw" : "pathToOdaFw"
+	, "client" : {
+		"path" : "pathToClient"
+		, "install" : {
+			"values":[
+				{"key":"@UrlHostClient@","value":"urlHostClient"}
+				, {"key":"@UrlHostServer@","value":"urlHostServer"}
+				, {"key":"@resources@","value":"resources"}
+			]
+		}
+		, "update" : {
+			"noUpdate" : [
+				{"file":"myfile.ext","pathInProject":"dir/"}
+			]
+		}
+	}
+	, "server" : {
+		"path" : "pathToServer"
+		, "install" : {
+			"values":[
+				{"key":"@dbDomaine@","value":"dbDomaine"},
+				{"key":"@dbName@","value":"dbName"},
+				{"key":"@dbLog@","value":"dbLog"},
+				{"key":"@dbPass@","value":"dbPass"},
+				{"key":"@prefixeDb@","value":"prefixeDb"},
+				{"key":"@UrlHostServer@","value":"urlHostServer"},
+				{"key":"@labelSite@","value":"labelSite"},
+				{"key":"@mail_admin@","value":"admin@mail.com"},
+				{"key":"@resources@","value":"resources"}
+			]
+		}
+		, "update" : {
+			"noUpdate" : [
+				{"file":"myfile.ext","pathInProject":"dir/"}
+			]
+		}
+	}
+}

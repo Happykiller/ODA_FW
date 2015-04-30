@@ -1,0 +1,38 @@
+{
+    "client" : {
+		"install" : {
+			"fileToCusto" : [
+				{"file":"config.js","pathInProject":"include/"}
+			]
+		}
+		, "update" : {
+			"noUpdate": [
+				{"file":"mycss.css","pathInProject":"css/"},
+				{"file":"config.js","pathInProject":"include/"},
+				{"file":"fonctions.js","pathInProject":"js/"},
+				{"file":"page_home.html","pathInProject":""},
+				{"file":"scenario.html","pathInProject":"test/"},
+				{"file":"test.js","pathInProject":"test/resources/"},
+				{"file":"favicon.png","pathInProject":"img/"},
+				{"file":"i8n.json","pathInProject":"json/"}
+			]
+		}
+	}
+	, "server" : {
+		"install" : {
+			"fileToCusto" : [
+				{"file":"init_struct.sql","pathInProject":"install/API/"},
+				{"file":"init_datas.sql","pathInProject":"install/API/"},
+				{"file":"config.php","pathInProject":"include/"}
+			]
+		}
+		, "update" : {
+			"noUpdate": [
+				{"file":"config.php","pathInProject":"include/"},
+				{"file":"init_struct.sql","pathInProject":"install/API/"},
+				{"file":"init_datas.sql","pathInProject":"install/API/"},
+				{"file":"test.php","pathInProject":"test/"}
+			]
+		}
+	}
+}

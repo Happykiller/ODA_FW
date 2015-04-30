@@ -1,0 +1,1341 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <!--META-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <!--CSS-->
+
+    <!--JS-->
+    <script language="javascript" type="text/javascript">
+    </script>
+  </head>
+<body>
+
+    <div class="vt" id="wikimaincol">
+      <p>
+        <strong>Documentation Technique</strong>
+      </p>
+      <p>Sommaire</p>
+      <ul>
+        <li>
+          <a href="#Introduction">Introduction</a>
+        </li>
+        <li>
+          <a href="#Authentification">Authentification</a>
+        </li>
+        <li>
+          <a href="#Functions.php">Functions.php</a>
+        </li>
+        <li style="list-style: none; display: inline">
+          <ul>
+            <li>
+              <a href="#buildConnection">buildConnection</a>
+            </li>
+            <li>
+              <a href="#buildSession">buildSession</a>
+            </li>
+            <li>
+              <a href="#checkKey">checkKey</a>
+            </li>
+            <li>
+              <a href="#isDecode">isDecode</a>
+            </li>
+            <li>
+              <a href="#envoiMail">envoiMail</a>
+            </li>
+            <li>
+              <a href="#equal">equal</a>
+            </li>
+            <li>
+              <a href="#exceptions_error_handler">exceptions_error_handler</a>
+            </li>
+            <li>
+              <a href="#finishTransaction">finishTransaction</a>
+            </li>
+            <li>
+              <a href="#formatTypeData">formatTypeData</a>
+            </li>
+            <li>
+              <a href="#getBrowser">getBrowser</a>
+            </li>
+            <li>
+              <a href="#getDateTimeWithMili">getDateTimeWithMili</a>
+            </li>
+            <li>
+              <a href="#getEnumValues">getEnumValues</a>
+            </li>
+            <li>
+              <a href="#get_string_between">get_string_between</a>
+            </li>
+            <li>
+              <a href="#initTransaction">initTransaction</a>
+            </li>
+            <li>
+              <a href="#multiexplode">multiexplode</a>
+            </li>
+            <li>
+              <a href="#outputCSV">outputCSV</a>
+            </li>
+            <li>
+              <a href="#recupGet">recupGet</a>
+            </li>
+            <li>
+              <a href="#recupInput,_changement_de_nom_du_recupGet.">recupInput, changement de nom du recupGet.</a>
+            </li>
+            <li>
+              <a href="#test">test</a>
+            </li>
+            <li>
+              <a href="#updateTransaction">updateTransaction</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#Functions.js">Functions.js</a>
+        </li>
+        <li style="list-style: none; display: inline">
+          <ul>
+            <li>
+              <a href="#AJ">AJ</a>
+            </li>
+            <li>
+              <a href="#addStat">addStat</a>
+            </li>
+            <li>
+              <a href="#addUtilisateur">addUtilisateur</a>
+            </li>
+            <li>
+              <a href="#afficheAideIhm">afficheAideIhm</a>
+            </li>
+            <li>
+              <a href="#arrondir">arrondir</a>
+            </li>
+            <li>
+              <a href="#buildParamsGetFromJson">buildParamsGetFromJson</a>
+            </li>
+            <li>
+              <a href="#cacherAide">cacherAide</a>
+            </li>
+            <li>
+              <a href="#@name_callBD">@name callBD</a>
+            </li>
+            <li>
+              <a href="#changeCouleur">changeCouleur</a>
+            </li>
+            <li>
+              <a href="#changeOutline">changeOutline</a>
+            </li>
+            <li>
+              <a href="#checkAuth">checkAuth</a>
+            </li>
+            <li>
+              <a href="#checkAuthentification">checkAuthentification</a>
+            </li>
+            <li>
+              <a href="#checkMaintenance">checkMaintenance</a>
+            </li>
+            <li>
+              <a href="#@name_convertSecondsToTime">@name convertSecondsToTime</a>
+            </li>
+            <li>
+              <a href="#daysInMonth">daysInMonth</a>
+            </li>
+            <li>
+              <a href="#del_Cookie">del_Cookie</a>
+            </li>
+            <li>
+              <a href="#deleteSQL">deleteSQL</a>
+            </li>
+            <li>
+              <a href="#getAuth">getAuth</a>
+            </li>
+            <li>
+              <a href="#getAuthInfo">getAuthInfo</a>
+            </li>
+            <li>
+              <a href="#getFloatToInt">getFloatToInt</a>
+            </li>
+            <li>
+              <a href="#getHtmlMenu">getHtmlMenu</a>
+            </li>
+            <li>
+              <a href="#@name_getJour">@name getJour</a>
+            </li>
+            <li>
+              <a href="#getListValeurPourAttribut">getListValeurPourAttribut</a>
+            </li>
+            <li>
+              <a href="#getMilise">getMilise</a>
+            </li>
+            <li>
+              <a href="#getObjDateFromStrUs">getObjDateFromStrUs</a>
+            </li>
+            <li>
+              <a href="#getPageActivite">getPageActivite</a>
+            </li>
+            <li>
+              <a href="#getParamGet">getParamGet</a>
+            </li>
+            <li>
+              <a href="#getParameter">getParameter</a>
+            </li>
+            <li>
+              <a href="#getRecupUtilisateur">getRecupUtilisateur</a>
+            </li>
+            <li>
+              <a href="#getRound">getRound</a>
+            </li>
+            <li>
+              <a href="#getSQL">getSQL</a>
+            </li>
+            <li>
+              <a href="#getStrDateFR">getStrDateFR</a>
+            </li>
+            <li>
+              <a href="#getStrDateFrFromUs">getStrDateFrFromUs</a>
+            </li>
+            <li>
+              <a href="#getStrDateTime">getStrDateTime</a>
+            </li>
+            <li>
+              <a href="#getStrDateTimeFrFromUs">getStrDateTimeFrFromUs</a>
+            </li>
+            <li>
+              <a href="#getStrDateTimeUS">getStrDateTimeUS</a>
+            </li>
+            <li>
+              <a href="#@name_getStrDateTimeUSLessSeparator">@name getStrDateTimeUSLessSeparator</a>
+            </li>
+            <li>
+              <a href="#getStrDateUsFromFr">getStrDateUsFromFr</a>
+            </li>
+            <li>
+              <a href="#getTabMenu">getTabMenu</a>
+            </li>
+            <li>
+              <a href="#getUserActivite">getUserActivite</a>
+            </li>
+            <li>
+              <a href="#get_cookie">get_cookie</a>
+            </li>
+            <li>
+              <a href="#getter">getter</a>
+            </li>
+            <li>
+              <a href="#initWorker">initWorker</a>
+            </li>
+            <li>
+              <a href="#init_commun">init_commun</a>
+            </li>
+            <li>
+              <a href="#insertContact">insertContact</a>
+            </li>
+            <li>
+              <a href="#insertSQL">insertSQL</a>
+            </li>
+            <li>
+              <a href="#isDateSupported">isDateSupported</a>
+            </li>
+            <li>
+              <a href="#isInArray">isInArray</a>
+            </li>
+            <li>
+              <a href="#isInt">isInt</a>
+            </li>
+            <li>
+              <a href="#iterateAttributesAndFormHTMLLabels">iterateAttributesAndFormHTMLLabels</a>
+            </li>
+            <li>
+              <a href="#log">log</a>
+            </li>
+            <li>
+              <a href="#login">login</a>
+            </li>
+            <li>
+              <a href="#logout">logout</a>
+            </li>
+            <li>
+              <a href="#mainfunc">mainfunc</a>
+            </li>
+            <li>
+              <a href="#messagesBtOn">messagesBtOn</a>
+            </li>
+            <li>
+              <a href="#messagesLus">messagesLus</a>
+            </li>
+            <li>
+              <a href="#messagesShow">messagesShow</a>
+            </li>
+            <li>
+              <a href="#notification">notification</a>
+            </li>
+            <li>
+              <a href="#Hidden_notification">Hidden notification</a>
+            </li>
+            <li>
+              <a href="#objDataTableFromJsonArray">objDataTableFromJsonArray</a>
+            </li>
+            <li>
+              <a href="#pad2">pad2</a>
+            </li>
+            <li>
+              <a href="#remetCouleur">remetCouleur</a>
+            </li>
+            <li>
+              <a href="#saisirContact">saisirContact</a>
+            </li>
+            <li>
+              <a href="#sendFile">sendFile</a>
+            </li>
+            <li>
+              <a href="#send_mail">send_mail</a>
+            </li>
+            <li>
+              <a href="#setEnvOda">setEnvOda</a>
+            </li>
+            <li>
+              <a href="#setMontrer_aide_ihm">setMontrer_aide_ihm</a>
+            </li>
+            <li>
+              <a href="#setParameter">setParameter</a>
+            </li>
+            <li>
+              <a href="#set_cookie">set_cookie</a>
+            </li>
+            <li>
+              <a href="#setter">setter</a>
+            </li>
+            <li>
+              <a href="#show_commun">show_commun</a>
+            </li>
+            <li>
+              <a href="#Sleep">Sleep</a>
+            </li>
+            <li>
+              <a href="#strMinInHeureMin">strMinInHeureMin</a>
+            </li>
+            <li>
+              <a href="#terminateWorker">terminateWorker</a>
+            </li>
+            <li>
+              <a href="#uploadFile">uploadFile</a>
+            </li>
+            <li>
+              <a href="#workerMessage">workerMessage</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#API_REST">API REST</a>
+        </li>
+        <li style="list-style: none; display: inline">
+          <ul>
+            <li>
+              <a href="#Sp%C3%83%C2%A9cification">Spécification</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>#summary One-sentence summary of this page.</p>
+      <h1>
+      <a name="Introduction"></a>Introduction
+      <a href="#Introduction" class="section_anchor"></a></h1>
+      <h1>
+      <a name="Authentification"></a>Authentification
+      <a href="#Authentification" class="section_anchor"></a></h1>
+      <ul>
+        <li>Par la page d&#39;index</li>
+        <li>En paramètre get (getUser et getPass)</li>
+      </ul>
+      <h1>
+      <a name="Functions.php"></a>Functions.php
+      <a href="#Functions.php" class="section_anchor"></a></h1>
+      <blockquote>
+        <h2>
+        <a name="buildConnection"></a>buildConnection
+        <a href="#buildConnection" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param string $p_type</li>
+        <li>@param string $p_host</li>
+        <li>@param string $p_base</li>
+        <li>@param string $p_mdp</li>
+        <li>@return \PDO</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="buildSession"></a>buildSession
+        <a href="#buildSession" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param array $p_params</li>
+        <li>@return string</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="checkKey"></a>checkKey
+        <a href="#checkKey" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param boolean $p_modePublic</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="isDecode"></a>isDecode
+        <a href="#isDecode" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param array $p_userAgent</li>
+        <li>@return boolean</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="envoiMail"></a>envoiMail
+        <a href="#envoiMail" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param string $p_email_mail_ori</li>
+        <li>@param string $p_email_labelle_ori</li>
+        <li>@param string $p_email_mail_reply</li>
+        <li>@param string $p_email_labelle_reply</li>
+        <li>@param string $p_email_mails_dest</li>
+        <li>@param string $p_email_mails_copy</li>
+        <li>@param string $p_email_mails_cache</li>
+        <li>@param string $p_message_txt</li>
+        <li>@param string $p_message_html</li>
+        <li>@param string $p_sujet</li>
+        <li>@return string</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="equal"></a>equal
+        <a href="#equal" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@global stdClass $bufferTest</li>
+        <li>@param type $param1</li>
+        <li>@param type $param2</li>
+        <li>@param type $message</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="exceptions_error_handler"></a>exceptions_error_handler
+        <a href="#exceptions_error_handler" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param type $severity</li>
+        <li>@param type $message</li>
+        <li>@param type $filename</li>
+        <li>@param type $lineno</li>
+        <li>@return type</li>
+        <li>@throws ErrorException
+        <a href="/p/oda-commun/w/edit/ErrorException">?</a></li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="finishTransaction"></a>finishTransaction
+        <a href="#finishTransaction" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@global type $idTransaction</li>
+        <li>@global type $connection</li>
+        <li>@global type $prefixTable</li>
+        <li>@param string $
+        <i>strSorti</i></li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="formatTypeData"></a>formatTypeData
+          <a href="#formatTypeData" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param array $p_datas</i>
+        </li>
+        <li>
+          <i>@param \stdClass $p_params</i>
+        </li>
+        <li>
+          <i>@return array</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="getBrowser"></a>getBrowser
+          <a href="#getBrowser" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@return array</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="getDateTimeWithMili"></a>getDateTimeWithMili
+          <a href="#getDateTimeWithMili" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@return string|\DateTime
+          <a href="/p/oda-commun/w/edit/DateTime">?</a></i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="getEnumValues"></a>getEnumValues
+          <a href="#getEnumValues" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param array $p_array</i>
+        </li>
+        <li>
+          <i>@param string $p_key</i>
+        </li>
+        <li>
+          <i>@return string</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="get_string_between"></a>get_string_between
+          <a href="#get_string_between" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param string $string</i>
+        </li>
+        <li>
+          <i>@param string $start</i>
+        </li>
+        <li>
+          <i>@param string $end</i>
+        </li>
+        <li>
+          <i>@return string</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="initTransaction"></a>initTransaction
+          <a href="#initTransaction" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@return int</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="multiexplode"></a>multiexplode
+          <a href="#multiexplode" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param string $delimiters</i>
+        </li>
+        <li>
+          <i>@param string $string</i>
+        </li>
+        <li>
+          <i>@return array</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="outputCSV"></a>outputCSV
+          <a href="#outputCSV" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param string $data</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="recupGet"></a>recupGet
+          <a href="#recupGet" class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param array $p_arrayIn</i>
+        </li>
+        <li>
+          <i>@param boolean $p_bolDecode</i>
+        </li>
+        <li>
+          <i>@return array</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+          <i>
+          <a name="recupInput,_changement_de_nom_du_recupGet."></a>recupInput, changement de nom du recupGet.
+          <a href="#recupInput,_changement_de_nom_du_recupGet." class="section_anchor"></a></i>
+        </h2>
+      </blockquote>
+      <ul>
+        <li>
+          <i>@param array $p_arrayIn</i>
+        </li>
+        <li>
+          <i>@param boolean $p_bolDecode</i>
+        </li>
+        <li>
+          <i>@return array</i>
+        </li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="test"></a>test
+        <a href="#test" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@global stdClass $bufferTest</li>
+        <li>@param type $name</li>
+        <li>@param type $anonFunc</li>
+        <li>@return \stdClass</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="updateTransaction"></a>updateTransaction
+        <a href="#updateTransaction" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@global type $idTransaction</li>
+        <li>@global type $connection</li>
+        <li>@global type $prefixTable</li>
+        <li>@param type $p_array</li>
+      </ul>
+      <h1>
+      <a name="Functions.js"></a>Functions.js
+      <a href="#Functions.js" class="section_anchor"></a></h1>
+      <blockquote>
+        <h2>
+        <a name="AJ"></a>AJ
+        <a href="#AJ" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {XMLHttpRequest}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="addStat"></a>addStat
+        <a href="#addStat" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} user</li>
+        <li>@param {String} page</li>
+        <li>@param {String} action</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="addUtilisateur"></a>addUtilisateur
+        <a href="#addUtilisateur" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_nom</li>
+        <li>@param {String} p_prenom</li>
+        <li>@param {String} p_email</li>
+        <li>@param {String} p_motDePasse</li>
+        <li>@param {String} p_codeUtilisateur</li>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="afficheAideIhm"></a>afficheAideIhm
+        <a href="#afficheAideIhm" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_user</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="arrondir"></a>arrondir
+        <a href="#arrondir" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {float|int} p_value</li>
+        <li>@param {int} p_precision</li>
+        <li>@returns {float|int}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="buildParamsGetFromJson"></a>buildParamsGetFromJson
+        <a href="#buildParamsGetFromJson" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {json} p_input</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="cacherAide"></a>cacherAide
+        <a href="#cacherAide" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_user</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="@name_callBD"></a>@name callBD
+        <a href="#@name_callBD" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc Appel distant</li>
+        <li>@param {string} p_URLInterface</li>
+        <li>@param {string} p_type</li>
+        <li>@param {string} p_dataType</li>
+        <li>@param {json} p_tabInput</li>
+        <li>@param {string} p_functionRetour</li>
+        <li>@param {boolean} p_async</li>
+        <li>@returns {array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="changeCouleur"></a>changeCouleur
+        <a href="#changeCouleur" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {Obj} ligne</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="changeOutline"></a>changeOutline
+        <a href="#changeOutline" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_ligne</li>
+        <li>@param {String} p_borderStyle</li>
+        <li>@param {String} p_borderColor</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="checkAuth"></a>checkAuth
+        <a href="#checkAuth" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} page</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="checkAuthentification"></a>checkAuthentification
+        <a href="#checkAuthentification" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="checkMaintenance"></a>checkMaintenance
+        <a href="#checkMaintenance" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="@name_convertSecondsToTime"></a>@name convertSecondsToTime
+        <a href="#@name_convertSecondsToTime" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc Seconds to hh:mm:ss</li>
+        <li>@param {int} p_second</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="daysInMonth"></a>daysInMonth
+        <a href="#daysInMonth" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} month</li>
+        <li>@param {type} year</li>
+        <li>@returns {@exp;dd@call;getDate}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="del_Cookie"></a>del_Cookie
+        <a href="#del_Cookie" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_name</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="deleteSQL"></a>deleteSQL
+        <a href="#deleteSQL" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_sql</li>
+        <li>@returns {String|Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getAuth"></a>getAuth
+        <a href="#getAuth" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_log</li>
+        <li>@param {String} p_pass</li>
+        <li>@returns {array|unresolved}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getAuthInfo"></a>getAuthInfo
+        <a href="#getAuthInfo" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_code_user</li>
+        <li>@returns {array|unresolved}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getFloatToInt"></a>getFloatToInt
+        <a href="#getFloatToInt" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_float</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getHtmlMenu"></a>getHtmlMenu
+        <a href="#getHtmlMenu" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_rang</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="@name_getJour"></a>@name getJour
+        <a href="#@name_getJour" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc Converti le numéro du jour en son label</li>
+        <li>@param {String} p_valJour</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getListValeurPourAttribut"></a>getListValeurPourAttribut
+        <a href="#getListValeurPourAttribut" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {json} p_obj</li>
+        <li>@param {string} p_attribut</li>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getMilise"></a>getMilise
+        <a href="#getMilise" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {@exp;d@call;getTime}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getObjDateFromStrUs"></a>getObjDateFromStrUs
+        <a href="#getObjDateFromStrUs" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc retourne l&#39;object date pour un string date US</li>
+        <li>@param {type} p_strDate</li>
+        <li>@returns {Date}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getPageActivite"></a>getPageActivite
+        <a href="#getPageActivite" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getParamGet"></a>getParamGet
+        <a href="#getParamGet" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} name</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getParameter"></a>getParameter
+        <a href="#getParameter" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_param_name</li>
+        <li>@returns { int|varchar }</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getRecupUtilisateur"></a>getRecupUtilisateur
+        <a href="#getRecupUtilisateur" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_nom</li>
+        <li>@param {String} p_prenom</li>
+        <li>@param {String} p_email</li>
+        <li>@param {String} p_codeUtilisateur</li>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getRound"></a>getRound
+        <a href="#getRound" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {Float} p_val</li>
+        <li>@param {Int} p_deci</li>
+        <li>@returns {Float}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getSQL"></a>getSQL
+        <a href="#getSQL" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_sql</li>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getStrDateFR"></a>getStrDateFR
+        <a href="#getStrDateFR" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getStrDateFrFromUs"></a>getStrDateFrFromUs
+        <a href="#getStrDateFrFromUs" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_strDate</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getStrDateTime"></a>getStrDateTime
+        <a href="#getStrDateTime" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getStrDateTimeFrFromUs"></a>getStrDateTimeFrFromUs
+        <a href="#getStrDateTimeFrFromUs" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_strDateTime</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getStrDateTimeUS"></a>getStrDateTimeUS
+        <a href="#getStrDateTimeUS" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="@name_getStrDateTimeUSLessSeparator"></a>@name getStrDateTimeUSLessSeparator
+        <a href="#@name_getStrDateTimeUSLessSeparator" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc Retour le date time</li>
+        <li>@format au format YYYYMMDDHHMISS</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getStrDateUsFromFr"></a>getStrDateUsFromFr
+        <a href="#getStrDateUsFromFr" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_strDate</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getTabMenu"></a>getTabMenu
+        <a href="#getTabMenu" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_rang</li>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getUserActivite"></a>getUserActivite
+        <a href="#getUserActivite" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="get_cookie"></a>get_cookie
+        <a href="#get_cookie" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_name</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="getter"></a>getter
+        <a href="#getter" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_table</li>
+        <li>@param {string} p_get</li>
+        <li>@param {string} p_filtre</li>
+        <li>@returns {json}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="initWorker"></a>initWorker
+        <a href="#initWorker" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc pour initialiser un worker</li>
+        <li>@param {string} p_fileWorker</li>
+        <li>@param {string} p_fonctionRetour</li>
+        <li>@returns {Worker}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="init_commun"></a>init_commun
+        <a href="#init_commun" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="insertContact"></a>insertContact
+        <a href="#insertContact" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_reponse</li>
+        <li>@param {String} p_message</li>
+        <li>@param {String} p_code_user</li>
+        <li>@returns {Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="insertSQL"></a>insertSQL
+        <a href="#insertSQL" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_sql</li>
+        <li>@returns {String|Array}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="isDateSupported"></a>isDateSupported
+        <a href="#isDateSupported" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>Detecte si le format input date est supporter par le navigateur.</li>
+        <li>@returns {Boolean}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="isInArray"></a>isInArray
+        <a href="#isInArray" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_value</li>
+        <li>@param {array} p_array</li>
+        <li>@returns {Boolean}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="isInt"></a>isInt
+        <a href="#isInt" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_strValue</li>
+        <li>@returns {Int|String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="iterateAttributesAndFormHTMLLabels"></a>iterateAttributesAndFormHTMLLabels
+        <a href="#iterateAttributesAndFormHTMLLabels" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>Json to HTML UL/LI</li>
+        <li>@param {object} o</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="log"></a>log
+        <a href="#log" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {int} p_type</li>
+        <li>@param {string} p_msg</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="login"></a>login
+        <a href="#login" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_log</li>
+        <li>@param {string} p_pass</li>
+        <li>@param {string} p_page</li>
+        <li>@returns {object}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="logout"></a>logout
+        <a href="#logout" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="mainfunc"></a>mainfunc
+        <a href="#mainfunc" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {Function} func</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="messagesBtOn"></a>messagesBtOn
+        <a href="#messagesBtOn" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="messagesLus"></a>messagesLus
+        <a href="#messagesLus" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="messagesShow"></a>messagesShow
+        <a href="#messagesShow" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="notification"></a>notification
+        <a href="#notification" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>Show notification</li>
+        <li>@param {string} p_div</li>
+        <li>@param {string} p_message</li>
+        <li>@param {string} p_nivo</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="Hidden_notification"></a>Hidden notification
+        <a href="#Hidden_notification" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_div</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="objDataTableFromJsonArray"></a>objDataTableFromJsonArray
+        <a href="#objDataTableFromJsonArray" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {object} p_JsonArray
+        <a href="/p/oda-commun/w/edit/JsonArray">?</a></li>
+        <li>@returns {object}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="pad2"></a>pad2
+        <a href="#pad2" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} number</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="remetCouleur"></a>remetCouleur
+        <a href="#remetCouleur" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {object} ligne</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="saisirContact"></a>saisirContact
+        <a href="#saisirContact" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_codeDate</li>
+        <li>@param {type} p_reponse</li>
+        <li>@param {type} p_message</li>
+        <li>@returns {undefined}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="sendFile"></a>sendFile
+        <a href="#sendFile" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_fichiers</li>
+        <li>@param {type} p_dossier</li>
+        <li>@param {type} p_nom</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="send_mail"></a>send_mail
+        <a href="#send_mail" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_email_mail_ori</li>
+        <li>@param {String} p_email_labelle_ori</li>
+        <li>@param {String} p_email_mail_reply</li>
+        <li>@param {String} p_email_labelle_reply</li>
+        <li>@param {String} p_email_mails_dest</li>
+        <li>@param {String} p_email_mails_copy</li>
+        <li>@param {String} p_email_mails_cache</li>
+        <li>@param {String} p_message_txt</li>
+        <li>@param {String} p_message_html</li>
+        <li>@param {String} p_sujet</li>
+        <li>@returns {array|unresolved}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="setEnvOda"></a>setEnvOda
+        <a href="#setEnvOda" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>Pour definir le context</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="setMontrer_aide_ihm"></a>setMontrer_aide_ihm
+        <a href="#setMontrer_aide_ihm" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_user</li>
+        <li>@param {String} p_value</li>
+        <li>@returns {undefined}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="setParameter"></a>setParameter
+        <a href="#setParameter" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_param_name</li>
+        <li>@param {String} p_param_value</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="set_cookie"></a>set_cookie
+        <a href="#set_cookie" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_name</li>
+        <li>@param {string} p_value</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="setter"></a>setter
+        <a href="#setter" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {string} p_table</li>
+        <li>@param {string} p_set</li>
+        <li>@param {string} p_filtre</li>
+        <li>@returns {json}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="show_commun"></a>show_commun
+        <a href="#show_commun" class="section_anchor"></a></h2>
+      </blockquote>
+      <blockquote>
+        <h2>
+        <a name="Sleep"></a>Sleep
+        <a href="#Sleep" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {int} milliseconds</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="strMinInHeureMin"></a>strMinInHeureMin
+        <a href="#strMinInHeureMin" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {String} p_nbMinute</li>
+        <li>@returns {String}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="terminateWorker"></a>terminateWorker
+        <a href="#terminateWorker" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc pour finir le worker</li>
+        <li>@param {type} p_worker</li>
+        <li>@returns {undefined}</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="uploadFile"></a>uploadFile
+        <a href="#uploadFile" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@param {type} p_id_input</li>
+        <li>@param {type} p_dossier</li>
+        <li>@param {type} p_nom</li>
+      </ul>
+      <blockquote>
+        <h2>
+        <a name="workerMessage"></a>workerMessage
+        <a href="#workerMessage" class="section_anchor"></a></h2>
+      </blockquote>
+      <ul>
+        <li>@desc Constructeur pour notre obj message</li>
+        <li>@param {string} cmd</li>
+        <li>@param {json} parameter</li>
+        <li>@returns {WorkerMessage
+        <a href="/p/oda-commun/w/edit/WorkerMessage">?</a>}</li>
+      </ul>
+      <h1>
+      <a name="API_REST"></a>API REST
+      <a href="#API_REST" class="section_anchor"></a></h1>
+      <h2>
+      <a name="Spécification"></a>Spécification
+      <a href="#Sp%C3%83%C2%A9cification" class="section_anchor"></a></h2>
+      <ul>
+        <li>TODO</li>
+      </ul>
+    </div>
+
+</body>
+</html>
