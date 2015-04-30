@@ -15,6 +15,6 @@
 		"happykiller/oda_api": "dev-master"
     },
     "autoload": {
-        "psr-4": { "ProjectExemple\\": "php\class" }
+        "psr-4": { "ProjectExemple\\": "php/class" }
     }
 }
