@@ -3,8 +3,10 @@ import os
 import json
 import codecs
 
+pathFile = os.path.dirname(__file__)
+
 #append the relative location you want to import from
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "lib/")))
+sys.path.append(os.path.abspath(os.path.join(pathFile, "lib/")))
 
 import MyLib
 import MyLogger
@@ -115,7 +117,7 @@ for x in sys.argv :
         else :
             arguments["fichier_conf"] = x
             #Initialisation
-            config_json_private = MyLib.charger_config("private.config.odafw.json")
+            config_json_private = MyLib.charger_config(pathFile + "/" + "private.config.odafw.json")
             config_json_project = MyLib.charger_config(arguments["fichier_conf"])
 
 #Affichage
