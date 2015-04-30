@@ -1,9 +1,8 @@
 <?php
 require_once(__DIR__."/../API/php/class/SimpleObject/OdaConfig.php");
 $config = \Oda\SimpleObject\OdaConfig::getInstance();
-$config->domaine = "http://localhost/ODA_SANDBOX/back/";
+$config->domaine = "@UrlHostServer@";
 
 //for bd engine
-$config->BD_ENGINE->base = 'how';
-$config->BD_ENGINE->mdp = 'pass';
-$config->BD_ENGINE->prefixTable = 'how-';
+$config->BD_ENGINE->base = '@dbName@';
+$config->BD_ENGINE->mdp = '@dbPass@';

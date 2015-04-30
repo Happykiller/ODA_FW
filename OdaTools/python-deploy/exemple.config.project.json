@@ -4,9 +4,9 @@
 		"path" : "pathToClient"
 		, "install" : {
 			"values":[
-				{"key":"@UrlHostClient@","value":"urlHostClient"}
-				, {"key":"@UrlHostServer@","value":"urlHostServer"}
-				, {"key":"@resources@","value":"resources"}
+				{"key":"@UrlHostClient@","value":"urlHostClient"},
+				{"key":"@UrlHostServer@","value":"urlHostServer"},
+				{"key":"@resources@","value":"resources"}
 			]
 		}
 		, "update" : {
