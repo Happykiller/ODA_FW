@@ -19,6 +19,7 @@ class AutoLoader{
         $sep = self::getSperateur();
         if(strpos($class, __NAMESPACE__ . "\\") === 0){
             $class = str_replace(__NAMESPACE__ . "\\", '', $class);
+            $class = str_replace("\\", $sep, $class);
             $file_base = dirname(__FILE__).$sep.$class.'.php';
             require_once $file_base;
         }

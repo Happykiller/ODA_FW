@@ -4,7 +4,7 @@ use stdClass, \Oda\SimpleObject\OdaPrepareInterface, \Oda\SimpleObject\OdaPrepar
 //--------------------------------------------------------------------------
 //Header
 require("../API/php/header.php");
-require("../php/ProjectExempleInterface.php");
+require("../php/class/ProjectExempleInterface.php");
 
 //--------------------------------------------------------------------------
 //Build the interface

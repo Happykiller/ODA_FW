@@ -55,7 +55,7 @@ test( "[WEBAPP]log", function() {
 test( "[REST]exemple", function() {
     var tabSetting = { };
     var tabInput = { test : 'ok' };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/exemple.php", tabSetting, tabInput); 
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/exemple.php", tabSetting, tabInput); 
     
     ok(($.functionsLib.whatIsIt(retour) == "Object"), "Test OK : Passed!" );
 });
@@ -73,17 +73,17 @@ test( "[REST]test_secu", function() {
     
     var tabSetting = { };
     var tabInput = { keyAuthODA : "42c643cc44c593c5c2b4c5f6d40489dd" };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/tests/test_secu.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/tests/test_secu.php", tabSetting, tabInput);
     equal(retour["data"]["resultat"]["param_type"], "int", "Test OK : Passed! (avec key)" );
     
     var tabSetting = { };
     var tabInput = { keyAuthODA : 'badkey' };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/tests/test_secu.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/tests/test_secu.php", tabSetting, tabInput);
     equal(retour["strErreur"], "Key auth invalid.", "Test KO : Passed! (key : badkey)" );
     
     var tabSetting = { };
     var tabInput = { keyAuthODA : '' };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/tests/test_secu.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/tests/test_secu.php", tabSetting, tabInput);
     equal(retour["strErreur"], "Key auth empty.", "Test KO : Passed! (key : vide)" );
 });
 

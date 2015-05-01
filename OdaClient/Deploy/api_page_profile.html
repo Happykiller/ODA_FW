@@ -51,7 +51,7 @@
             
             var tabSetting = { functionRetour : retourInformations };
             var tabInput = { code_user : $.functionsLib.getUserInfo().code_user, profile : $.functionsLib.getUserInfo().profile };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getDetailsUser.php", tabSetting, tabInput); 
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getDetailsUser.php", tabSetting, tabInput); 
             
             return retour;
         } catch (er) {
@@ -66,7 +66,7 @@
     function chargerTheme(){
         try {
             var tabInput = { code_user : $.functionsLib.getUserInfo().code_user };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getListTheme.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getListTheme.php", {}, tabInput);
             
             if(retour["strErreur"] == ""){
                 if(retour["data"]["themePerso"] != "notAvailable"){
@@ -171,7 +171,7 @@
             var mdp = $('#input_old_password').val();
             var value = $('#input_'+p_champs).val();
             var tabInput = { code_user : $.functionsLib.getUserInfo().code_user, mdp : mdp, champs : p_champs, value : value };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/setChangeProfile.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/setChangeProfile.php", {}, tabInput);
             
             if(retour["strErreur"] == ""){
                 $('#lab_'+p_champs).html(value);
@@ -194,7 +194,7 @@
     function changerTheme(p_theme){
         try {
             var tabInput = { table : "api_tab_utilisateurs", set : '{"champ":"theme","valeur":"'+p_theme+'","type":"PARAM_STR"}', filtre : '{"champ":"code_user","valeur":"'+$.functionsLib.getUserInfo().code_user+'","type":"PARAM_STR"}' };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/setter.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/setter.php", {}, tabInput);
             
             if(retour["strErreur"] == ""){
                 location.reload();

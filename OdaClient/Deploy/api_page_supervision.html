@@ -51,7 +51,7 @@
             $('#div_metrics_interface').html(strhtml);
             var tabInput = { };
             var tabSetting = { functionRetour : retourMetricsInterface };
-            $.functionsLib.callRest(domaine+"API/phpsql/getMetricsInterface.php", tabSetting, tabInput);            
+            $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getMetricsInterface.php", tabSetting, tabInput);            
         } catch (er) {
             $.functionsLib.log(0, "ERROR(chargerMetricsInterface):" + er.message);
         }
@@ -145,7 +145,7 @@
            
             var tabSetting = { functionRetour : this.retourMaintenance};
             var tabInput = { exec : p_execution };
-            $.functionsLib.callRest(domaine+"API/phpsql/maintenanceDb.php", tabSetting, tabInput);    
+            $.functionsLib.callRest(g_urlHostServer+"API/phpsql/maintenanceDb.php", tabSetting, tabInput);    
             
             return myReturn;
         } catch (er) {

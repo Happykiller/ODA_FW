@@ -67,7 +67,7 @@
             $.functionsLib.notification("Merci de patienter ...", $.functionsLib.INFO);
             var tabSetting = { functionRetour : retourExemple};
             var tabInput = { param_name : 'nom_site' };
-            $.functionsLib.callRest(domaine+"phpsql/exemple.php", tabSetting, tabInput); 
+            $.functionsLib.callRest(g_urlHostServer+"phpsql/exemple.php", tabSetting, tabInput); 
             
             return myReturn;
         } catch (er) {

@@ -45,28 +45,28 @@ $retours[] = OdaLib::test("test_secu",function() {
         //---------------------------------------
         $params = new stdClass();
         $input = ["milis" => "123451","ctrl" => "ok","keyAuthODA" => "42c643cc44c593c5c2b4c5f6d40489dd"];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/tests/test_secu.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/tests/test_secu.php", $params, $input);
         
         OdaLib::equal($retourCallRest->data->resultat->param_type, "int", "Test OK : Passed! (avec key)");
 
         //---------------------------------------
         $params = new stdClass();
         $input = ["milis" => "123451","ctrl" => "ok","keyAuthODA" => "badkey"];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/tests/test_secu.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/tests/test_secu.php", $params, $input);
         
         OdaLib::equal($retourCallRest->strErreur, "Key auth invalid.", "Test KO : Passed! (key : caca)");
 
         //---------------------------------------
         $params = new stdClass();
         $input = ["milis" => "123451","ctrl" => "ok","keyAuthODA" => ""];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/tests/test_secu.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/tests/test_secu.php", $params, $input);
         
         OdaLib::equal($retourCallRest->strErreur, "Key auth empty.", "Test KO : Passed! (key : vide)");
 
         //---------------------------------------
         $params = new stdClass();
         $input = ["milis" => "123451","ctrl" => "ok"];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/tests/test_secu.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/tests/test_secu.php", $params, $input);
         
         OdaLib::equal($retourCallRest->strErreur, "Key auth empty.", "Test KO : Passed! (key : inexistante)");
     }         
@@ -83,7 +83,7 @@ $retours[] = OdaLib::test("getAuth",function() {
             "login" => "VIS",
             "mdp" =>  "VIS"
         ];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getAuth.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getAuth.php", $params, $input);
 
         OdaLib::equal($retourCallRest->data->resultat->profile, 99, "Test OK : Passed! (Avec bon log, pass)");
 
@@ -93,7 +93,7 @@ $retours[] = OdaLib::test("getAuth",function() {
             "login" => "badlog",
             "mdp" =>  "badpass"
         ];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getAuth.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getAuth.php", $params, $input);
         
         OdaLib::equal($retourCallRest->strErreur, "Auth impossible.", "Test KO : Passed! (Avec mauvais log, pass)");
     }         
@@ -107,7 +107,7 @@ $retours[] = OdaLib::test("getAuthInfo",function() {
         $input = [
             "code_user" => "VIS"
         ];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getAuthInfo.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getAuthInfo.php", $params, $input);
         
         OdaLib::equal($retourCallRest->data->resultat->profile, 99, "Test OK : Passed! (Avec code user existant)");
 
@@ -116,7 +116,7 @@ $retours[] = OdaLib::test("getAuthInfo",function() {
         $input = [
             "code_user" => "fdfdfd"
         ];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getAuthInfo.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getAuthInfo.php", $params, $input);
         
         OdaLib::equal($retourCallRest->data->resultat, false, "Test OK : Passed! (Avec code user inconnu)");
     }         
@@ -133,7 +133,7 @@ $retours[] = OdaLib::test("getDetailsUser",function() {
             "code_user" => "VIS",
             "profile" => "99"
         ];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getDetailsUser.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getDetailsUser.php", $params, $input);
         
         OdaLib::equal($retourCallRest->data->detailsUser->profile, 99, "Test OK : Passed! (Avec code user existant)");
     }         
@@ -145,7 +145,7 @@ $retours[] = OdaLib::test("getListMail",function() {
         //---------------------------------------
         $params = new stdClass();
         $input = [];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getListMail.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getListMail.php", $params, $input);
         
         OdaLib::equal((count($retourCallRest->data->resultat) > 0), true, "Test OK : Passed! (".count($retourCallRest->data->resultat)." found)");
     }         
@@ -204,7 +204,7 @@ $retours[] = OdaLib::test("getListutilisateurs",function() {
         //---------------------------------------
         $params = new stdClass();
         $input = ["indice_user" => 1];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/phpsql/getListutilisateurs.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/phpsql/getListutilisateurs.php", $params, $input);
         
         OdaLib::equal(($retourCallRest->data->resultats->nombre), true, "Test OK : Passed! (".$retourCallRest->data->resultats->nombre." found)");
     }         
@@ -220,7 +220,7 @@ $retours[] = OdaLib::test("send_mail",function() {
             , "message_html" => "<html><head></head><body><b>Merci</b> de répondre à ce mail en moins de 37min</body></html>"
             , "sujet" => "Hey mon ami !"
         ];
-        $retourCallRest = OdaLib::CallRest($config->domaine."API/scriptphp/send_mail.php", $params, $input);
+        $retourCallRest = OdaLib::CallRest($config->urlServer."API/scriptphp/send_mail.php", $params, $input);
         
         OdaLib::equal(($retourCallRest->statut == "ok"), true, "Test OK : Passed! (id_transaction : ".$retourCallRest->id_transaction.")");
     }         

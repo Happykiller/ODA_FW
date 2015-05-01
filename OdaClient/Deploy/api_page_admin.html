@@ -58,7 +58,7 @@
             var retour = true;
             
             var tabInput = { indice_user : $.functionsLib.getUserInfo().code_user};
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getListutilisateurs.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getListutilisateurs.php", {}, tabInput);
             
             if(retour["strErreur"] == ""){
                 var objDataTable = $.functionsLib.objDataTableFromJsonArray(retour["data"]["resultats"]["data"]);
@@ -195,7 +195,7 @@
             
             var tabSetting = { };
             var tabInput = { };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getListMail.php", tabSetting, tabInput); 
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getListMail.php", tabSetting, tabInput); 
             
             if(retour["strErreur"] == ""){
                 var strhtml = getHtmlListDiffusion(retour["data"]["resultat"]["data"]);
@@ -218,7 +218,7 @@
     function editer(p_code_user) {
         try {
             var tabInput = { code_user : p_code_user, profile : $.functionsLib.getUserInfo().profile };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getDetailsUser.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getDetailsUser.php", {}, tabInput);
             if(retour["strErreur"] == ""){
                 user_edit = p_code_user;
                 
@@ -271,7 +271,7 @@
             
             if((mail != "")&&(actif != "")&&(rang != "")){
                 var tabInput = { code_user : code_user, mail : mail, actif : actif, rang : rang };
-                var retour = $.functionsLib.callRest(domaine+"API/phpsql/updateUser.php", {}, tabInput);
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/updateUser.php", {}, tabInput);
                 if(retour["strErreur"] == ""){
                     user_edit = "";
                     $('#edit_mail').val("");
@@ -311,7 +311,7 @@
             var strhtml = "<IMG SRC=\"API/img/loading.gif\" ALT=\"Chargement\" TITLE=\"Chargement\">";
             $('#div_messages').html(strhtml);
             var tabInput = { code_user : $.functionsLib.getUserInfo().code_user };
-            $.functionsLib.callRest(domaine+"API/phpsql/getMessages.php", {functionRetour : retourMessages}, tabInput);          
+            $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getMessages.php", {functionRetour : retourMessages}, tabInput);          
         } catch (er) {
             $.functionsLib.log(0, "ERROR(chargerMessages):" + er.message);
         }
@@ -392,7 +392,7 @@
                     , date_expiration : input_date_expiration
                     , profile : input_profile
                 };
-                var retour = $.functionsLib.callRest(domaine+"API/phpsql/addMessage.php", {}, tabInput);
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/addMessage.php", {}, tabInput);
                 if(retour["strErreur"] == ""){
                     $('#input_message').val("");
                     $('#input_niveau').val("");

@@ -52,7 +52,7 @@
     function afficherActivite() {
         try {
             var tabInput = {  };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getUserActivite.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getUserActivite.php", {}, tabInput);
             
             if(retour["strErreur"] == ""){
                 var datas = retour["data"]["resultat"]["data"];
@@ -116,7 +116,7 @@
     function afficherPageActivite() {
         try {
             var tabInput = {  };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getPageActivite.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getPageActivite.php", {}, tabInput);
             
             if(retour["strErreur"] == ""){
                 var datas = retour["data"]["resultat"]["data"];

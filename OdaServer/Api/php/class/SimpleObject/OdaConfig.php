@@ -20,7 +20,7 @@ class OdaConfig {
      * Mandatory
      * @var string 
      */
-    public $domaine;
+    public $urlServer;
     /**
      * @var string 
      */
@@ -84,7 +84,7 @@ class OdaConfig {
      * @return boolean
      */
     public function isOK(){
-        if(is_null($this->domaine)||(empty($this->domaine))){
+        if(is_null($this->urlServer)||(empty($this->urlServer))){
             $params = new \stdClass();
             $params->class = __CLASS__;
             $params->function = __FUNCTION__;

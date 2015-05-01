@@ -99,23 +99,23 @@ test( "[WEBAPP]checkAuth", function() {
 test( "[REST]getAuth", function() {
     var tabSetting = { };
     var tabInput = { login : "VIS", mdp : "VIS" };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/getAuth.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuth.php", tabSetting, tabInput);
     deepEqual( retour["data"]["resultat"]["profile"], "99", "Test OK : Passed! (Avec bon log, pass)" ); 
     
     var tabSetting = { };
     var tabInput = { login : "badLog", mdp : "badPass" };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/getAuth.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuth.php", tabSetting, tabInput);
     equal( retour["strErreur"], "Auth impossible.", "Test KO : Passed! (Avec mauvais log, pass)" );
 });
 
 test( "[REST]getAuthInfo", function() {
     var tabSetting = { };
     var tabInput = { code_user : "VIS" };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/getAuthInfo.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuthInfo.php", tabSetting, tabInput);
     deepEqual( retour["data"]["resultat"]["profile"], "99", "Test OK : Passed! (Avec code user existant)" ); 
     
     var tabSetting = { };
     var tabInput = { code_user : "badLog" };
-    var retour = $.functionsLib.callRest(domaine+"API/phpsql/getAuthInfo.php", tabSetting, tabInput);
+    var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuthInfo.php", tabSetting, tabInput);
     equal( retour["data"]["resultat"], false, "Test KO : Passed! (Avec code user inconnu)" );
 });

@@ -190,7 +190,7 @@ function WorkerMessage(cmd, parameter) {
         document.addEventListener("deviceready", _onDeviceReady, false);
         
         //Pour localstorage
-        $.functionsStorage.storageKey = "ODA__"+domaine+"__";
+        $.functionsStorage.storageKey = "ODA__"+g_urlHostServer+"__";
         _startRobot();
         
         //maintenance
@@ -314,7 +314,7 @@ function WorkerMessage(cmd, parameter) {
             var tabInput = { 
                 code_user : code_user
             };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getAuthInfo.php", tabSetting, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuthInfo.php", tabSetting, tabInput);
             
             if(retour.strErreur == ""){
                 userInfo = retour.data.resultat;
@@ -367,7 +367,7 @@ function WorkerMessage(cmd, parameter) {
                     "code_user" : session.code_user
                     , "key" : session.key
                 };
-                var retour = $.functionsLib.callRest(domaine+"API/phpsql/checkSession.php", tabSetting, tabInput); 
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/checkSession.php", tabSetting, tabInput); 
                 if(retour.data){
                     //session ok
                     if(($.functionsLib.pageName == "index.html") || ($.functionsLib.pageName == "")){
@@ -439,7 +439,7 @@ function WorkerMessage(cmd, parameter) {
             var listPage = [];
 
             var tabInput = { rang : p_rang, id_page : id_page };
-            var retour = $.functionsLib.callRest(domaine+"API/phpsql/getMenu.php", {}, tabInput);
+            var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getMenu.php", {}, tabInput);
 
             if(retour["strErreur"] == ""){
                 var datas = retour["data"]["resultat"]["data"];
@@ -501,7 +501,7 @@ function WorkerMessage(cmd, parameter) {
     function _messagesShow() {
         try {
             var tabInput = { code_user : $.functionsLib.getUserInfo().code_user };
-            var json_retour = $.functionsLib.callRest(domaine+"API/phpsql/getMessagesToDisplay.php", {}, tabInput);
+            var json_retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getMessagesToDisplay.php", {}, tabInput);
             if(json_retour["strErreur"] == ""){
                 if(parseInt(json_retour["data"]["messages"]["nombre"]) > 0){
                     var strHTML = "";
@@ -809,7 +809,7 @@ function WorkerMessage(cmd, parameter) {
         addUtilisateur : function(p_nom, p_prenom, p_email, p_motDePasse, p_codeUtilisateur) {
             try {
                 var tabInput = { nom : p_nom, prenom : p_prenom, email : p_email, motDePasse : p_motDePasse, codeUtilisateur : p_codeUtilisateur };
-                var retour = this.callRest(domaine+"API/phpsql/addUtilisateur.php", {}, tabInput);
+                var retour = this.callRest(g_urlHostServer+"API/phpsql/addUtilisateur.php", {}, tabInput);
 
                 return retour;
             } catch (er) {
@@ -978,7 +978,7 @@ function WorkerMessage(cmd, parameter) {
         messagesLus : function() {
             try {
                 var tabInput = { code_user : this.getUserInfo().code_user };
-                var retour = $.functionsLib.callRest(domaine+"API/phpsql/setMessagesLus.php", {}, tabInput);
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/setMessagesLus.php", {}, tabInput);
                 if(retour["strErreur"] == ""){
                     this.notification("Merci",$.functionsLib.oda_msg_color.SUCCES);
                 } else{
@@ -1035,7 +1035,7 @@ function WorkerMessage(cmd, parameter) {
                    type : p_type
                    , msg : p_msg 
                };
-               var retour = this.callRest(domaine+"API/phpsql/insertLog.php", tabSetting, tabInput);
+               var retour = this.callRest(g_urlHostServer+"API/phpsql/insertLog.php", tabSetting, tabInput);
                
                return true;
            } catch (er) {
@@ -1190,7 +1190,7 @@ function WorkerMessage(cmd, parameter) {
                     return false;
                 }
 
-                var returns = this.callRest(domaine+"API/scriptphp/send_mail.php", {type : 'POST'}, params);
+                var returns = this.callRest(g_urlHostServer+"API/scriptphp/send_mail.php", {type : 'POST'}, params);
 
                 return returns;
            } catch (er) {
@@ -1210,7 +1210,7 @@ function WorkerMessage(cmd, parameter) {
                 var strResponse;
 
                 var tabInput = { param_name : p_param_name };
-                var json_retour = this.callRest(domaine+"API/phpsql/getParam.php", {type : 'POST'}, tabInput);   
+                var json_retour = this.callRest(g_urlHostServer+"API/phpsql/getParam.php", {type : 'POST'}, tabInput);   
                 if(json_retour["strErreur"] == ""){
                     var type = json_retour["data"]["leParametre"]["param_type"];
                     var value = json_retour["data"]["leParametre"]["param_value"];
@@ -1252,7 +1252,7 @@ function WorkerMessage(cmd, parameter) {
                    param_name : p_param_name,
                    param_value : p_param_value
                };
-               var json_retour = this.callRest(domaine+"API/phpsql/setParam.php", {}, tabInput);  
+               var json_retour = this.callRest(g_urlHostServer+"API/phpsql/setParam.php", {}, tabInput);  
 
                return strResponse;
            } catch (er) {
@@ -1317,7 +1317,7 @@ function WorkerMessage(cmd, parameter) {
                     page : p_page,
                     action : p_action
                 };
-                var retour = $.functionsLib.callRest(domaine+"API/phpsql/addStat.php", tabSetting, tabInput);
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/addStat.php", tabSetting, tabInput);
            } catch (er) {
                this.log(0, "ERROR($.functionsLib.addStat):" + er.message);
            }
@@ -1400,7 +1400,7 @@ function WorkerMessage(cmd, parameter) {
         getter :  function(p_table, p_get, p_filtre) {
             try {
                 var tabInput = { table : p_table, get : p_get, filtre : p_filtre };
-                var json_retour = this.callRest(domaine+"API/phpsql/getter.php", {type : 'POST'}, tabInput);
+                var json_retour = this.callRest(g_urlHostServer+"API/phpsql/getter.php", {type : 'POST'}, tabInput);
 
                 var valeur = null;
 
@@ -1441,7 +1441,7 @@ function WorkerMessage(cmd, parameter) {
                 if(valeur == null){
                 
                     var tabInput = { "sql" : "Select `labelle`,`indice` FROM `api_tab_rangs` ORDER BY `indice` desc" };
-                    var json_retour = this.callRest(domaine+"API/phpsql/getSQL.php", {type : 'POST'}, tabInput);
+                    var json_retour = this.callRest(g_urlHostServer+"API/phpsql/getSQL.php", {type : 'POST'}, tabInput);
 
                     if(json_retour["strErreur"] == ""){
                         valeur = json_retour.data.resultat.data;
@@ -1467,7 +1467,7 @@ function WorkerMessage(cmd, parameter) {
         getSQL : function(p_sql) {
            try {
                var tabInput = { sql : p_sql };
-               var retour = this.callRest(domaine+"API/phpsql/getSQL.php", {}, tabInput);
+               var retour = this.callRest(g_urlHostServer+"API/phpsql/getSQL.php", {}, tabInput);
 
                return retour;
            } catch (er) {
@@ -1484,7 +1484,7 @@ function WorkerMessage(cmd, parameter) {
         insertSQL : function(p_sql) {
             try {
                 var tabInput = { sql : p_sql };
-                var retour = this.callRest(domaine+"API/phpsql/insertSQL.php", {}, tabInput);
+                var retour = this.callRest(g_urlHostServer+"API/phpsql/insertSQL.php", {}, tabInput);
 
                 return retour;
             } catch (er) {
@@ -1504,7 +1504,7 @@ function WorkerMessage(cmd, parameter) {
             try {
                 var tabSetting = { type : "post" };
                 var tabInput = { reponse : p_reponse, message : p_message, code_user : p_code_user };
-                var retour = this.callRest(domaine+"API/phpsql/insertContact.php", tabSetting, tabInput);
+                var retour = this.callRest(g_urlHostServer+"API/phpsql/insertContact.php", tabSetting, tabInput);
 
                 return retour;
             } catch (er) {
@@ -1521,7 +1521,7 @@ function WorkerMessage(cmd, parameter) {
         deleteSQL : function(p_sql) {
             try {
                 var tabInput = { sql : p_sql };
-                var retour = this.callRest(domaine+"API/phpsql/deleteSQL.php", {}, tabInput);
+                var retour = this.callRest(g_urlHostServer+"API/phpsql/deleteSQL.php", {}, tabInput);
 
                 return retour;
             } catch (er) {
@@ -1591,7 +1591,7 @@ function WorkerMessage(cmd, parameter) {
         cacherAide : function(p_user) {
             try {
                 var tabInput = { code_user : p_user, valeur : 0};
-                var retour = this.callRest(domaine+"API/phpsql/setMontrer_aide_ihm.php", {}, tabInput);
+                var retour = this.callRest(g_urlHostServer+"API/phpsql/setMontrer_aide_ihm.php", {}, tabInput);
                 $("#div_aide_ihm").hide();
             } catch (er) {
                 this.log(0, "ERROR($.functionsLib.cacherAide):" + er.message);
@@ -1723,7 +1723,7 @@ function WorkerMessage(cmd, parameter) {
         getRecupUtilisateur : function(p_identifiant, p_email) {
             try {
                 var tabInput = { identifiant : p_identifiant, email : p_email};
-                var retour = this.callRest(domaine+"API/phpsql/getRecupUtilisateur.php", {}, tabInput);
+                var retour = this.callRest(g_urlHostServer+"API/phpsql/getRecupUtilisateur.php", {}, tabInput);
 
                 return retour;
             } catch (er) {
@@ -1969,7 +1969,7 @@ function WorkerMessage(cmd, parameter) {
                 var tabInput = { 
                     "key" : session.key
                 };
-                var retour = $.functionsLib.callRest(domaine+"API/phpsql/deleteSession.php", {}, tabInput); 
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/deleteSession.php", {}, tabInput); 
                 $.functionsStorage.remove("ODA-SESSION");
            } catch (er) {
                this.log(0, "ERROR($.functionsLib.logout):" + er.message);
@@ -1999,7 +1999,7 @@ function WorkerMessage(cmd, parameter) {
 
                if(retour.statut == "ok"){
                     var tabInput = { login : p_log, mdp : p_pass };
-                    var returns = $.functionsLib.callRest(domaine+"API/phpsql/getAuth.php", {}, tabInput); 
+                    var returns = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuth.php", {}, tabInput); 
                     if(returns["strErreur"] == ""){
                         var code_user = returns["data"]["resultat"]["code_user"].toUpperCase();
                         var key = returns["data"]["resultat"]["keyAuthODA"];
@@ -2089,7 +2089,7 @@ function WorkerMessage(cmd, parameter) {
         * @return {boolean} description
         */
         testEvents : function() {
-            var source = new EventSource(domaine+"API/phpsql/events.php");
+            var source = new EventSource(g_urlHostServer+"API/phpsql/events.php");
             
             source.addEventListener('time', function(e) {
                 var data = JSON.parse(e.data);
@@ -2161,7 +2161,7 @@ function WorkerMessage(cmd, parameter) {
             try {
                 var retour = { appel : "ko", code : "ko", message : "init" };
 
-                var strUrl = domaine+'API/scriptphp/uploadFile.php?dossier='+p_dossier+'&nom='+p_nom;
+                var strUrl = g_urlHostServer+'API/scriptphp/uploadFile.php?dossier='+p_dossier+'&nom='+p_nom;
 
                 var ajax = $.ajax({
                     url: strUrl,

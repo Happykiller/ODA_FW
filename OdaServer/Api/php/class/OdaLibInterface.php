@@ -311,7 +311,7 @@ class OdaLibInterface {
             $tabName = explode("/",$SCRIPT_NAME);
             $SCRIPT_NAME = str_replace("/".$tabName[1]."/", "", $SCRIPT_NAME);
             
-            $strUrl = self::$config->domaine.$SCRIPT_NAME."?milis=". SimpleObject\OdaDate::getMicro();
+            $strUrl = self::$config->urlServer.$SCRIPT_NAME."?milis=". SimpleObject\OdaDate::getMicro();
             
             foreach ($this->inputs as $key => $value){
                 if(($key != 'keyAuthODA')&&($key != 'ODAFileName')&&($key != 'ODAFileType')){

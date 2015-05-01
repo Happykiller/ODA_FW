@@ -1,8 +1,0 @@
-+ ftp :
-@ftpLogin@/@ftpPass@
-
-+ db :
-@dbDomaine@/@dbLog@/@dbPass@
-
-+ CSV 
-@csvName@

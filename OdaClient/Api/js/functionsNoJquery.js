@@ -180,7 +180,7 @@ function WorkerMessage(cmd, parameter) {
         getSQL : function(p_sql) {
            try {
                var tabInput = { sql : p_sql };
-               var retour = this.callRest(domaine+"API/phpsql/getSQL.php", {}, tabInput);
+               var retour = this.callRest(g_urlHostServer+"API/phpsql/getSQL.php", {}, tabInput);
 
                return retour;
            } catch (er) {
