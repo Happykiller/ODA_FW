@@ -1,1 +1,3 @@
-ODA_SANDBOX.config.project.json
+Deploy.py.log
+lib/__pycache__/
+lib/__pycache__/*
