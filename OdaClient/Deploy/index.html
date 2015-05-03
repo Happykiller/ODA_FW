@@ -29,7 +29,7 @@
     //Fin chargement page
     $.functionsLib.ready = function(){
         try {
-            $( "#content_log" ).collapsible( "disable" );
+            $( "#div_form" ).collapsible( "disable" );
             chargerSiteLabel();
         } catch (er) {
             $.functionsLib.log(0, "ERROR(OnLoad):" + er.message);
@@ -70,6 +70,51 @@
             $.functionsLib.log(0, "ERROR(letMeIn):" + er.message);
         }
     }
+    
+    /**
+     * letMeInfWithGoogle
+     */
+    function letMeInfWithGoogle(p_code_user, p_mail) {
+        try {
+            var retour_login = $.functionsLib.login(p_code_user, "authByGoogle-"+p_mail, "index.html");
+            
+            if(retour_login.statut == "ok"){
+                window.location = "./page_home.html?mili="+$.functionsLib.getMilise();
+            }else{
+                $.functionsLib.notification("Erreur d'authentification.("+retour_login.message+")",$.functionsLib.oda_msg_color.WARNING);
+            }
+        } catch (er) {
+            $.functionsLib.log(0, "ERROR(letMeInfWithGoogle):" + er.message);
+        }
+    }
+    
+    /**
+     * goInWithGoogle
+     */
+    function goInWithGoogle() {
+        try {
+            gapi.client.oauth2.userinfo.get().execute(function(resp) {
+                var retour = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAccountsFromEmail.php", {}, { "email" : resp.email});
+                if(retour.strErreur == ""){
+                    if(retour.data.nombre == 0){
+                        $.functionsLib.notification("Pas de compte rattach&eacute; à l'email : "+resp.email,$.functionsLib.oda_msg_color.WARNING);
+                    }else if(retour.data.nombre == 1){
+                        letMeInfWithGoogle(retour.data[0].code_user, resp.email);
+                    }else {
+                        var strHtml = '<br><ul data-role="listview">';
+                        for (var indice in retour.data.data) {
+                            var elt = retour.data.data[indice];
+                            strHtml += "<li><a href=\"javascript:letMeInfWithGoogle('"+elt.code_user+"','"+resp.email+"');\">"+elt.code_user+"</a></li>";
+                        }
+                        strHtml += '</ul>';
+                        $.functionsLib.affichePopUp("Choisir le compte.", strHtml);
+                    }
+                }
+            });
+        } catch (er) {
+            $.functionsLib.log(0, "ERROR(goInWithGoogle):" + er.message);
+        }
+    }
 		
     </script>
   </head>
@@ -86,6 +131,16 @@
 
         <!-- content -->
         <div data-role="content" id="main_content" ng-controller="OdaLoginController" ng-form='{{formulaire.valide}}'>
+            
+            <!-- PopUp -->
+            <div data-role="popup" id="popup" class="ui-content">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <div>
+                    <label id="label_popup"></label>
+                    <div id="div_popup"></div>
+                </div>
+            </div>
+            <!-- /PopUp -->
             
             <label id="label_site_label"></label>
 
@@ -109,7 +164,9 @@
                 <a href="javascript:letMeIn();" data-role="button" data-inline="true" data-icon="arrow-r" data-mini="true" id="submit" ng-class="{'ui-state-disabled' : !formulaire.valide, 'ui-btn-active' : formulaire.valide}">Soumettre</a>					
                 <a href="javascript:window.location = ('./api_page_creercompte.html?mili='+$.functionsLib.getMilise());" data-role="button" data-inline="true" data-icon="arrow-r" data-mini="true" id="creercompte">Cr&eacute;er un compte</a>
                 <a href="javascript:window.location = ('./api_page_accesperdu.html?mili='+$.functionsLib.getMilise());" data-role="button" data-inline="true" data-icon="arrow-r" data-mini="true" id="accesperdu">Acc&egrave;s perdu ?</a>
+                <div id="content" style="text-align: center"></div> 
             </div>
+            
         </div>
         <!-- /content -->
 
@@ -162,6 +219,16 @@
             }, true);
         });
     </script>
-      
+    <script type="text/javascript" src="API/js/OdaLibGoogle.js"></script>
+    <script>
+        $.functionsGoogle.startSessionAuth(
+            function(){
+                $('#content').html('<a href="javascript:goInWithGoogle();" data-role="button" data-inline="true" data-icon="arrow-r" data-mini="true" id="accesperdu">Enter with Google Auth</a>').trigger("create");
+            }
+            , function(){
+                $('#content').html('<a href="javascript:$.functionsGoogle.callServiceGoogleAuth(goInWithGoogle);" data-role="button" data-inline="true" data-icon="arrow-r" data-mini="true" id="accesperdu">Enter with Google Auth</a>').trigger("create");
+            }
+        );
+    </script>
 </body>
 </html>

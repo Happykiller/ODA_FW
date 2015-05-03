@@ -1984,20 +1984,20 @@ function WorkerMessage(cmd, parameter) {
          * @returns {object}
          */
         login : function(p_log, p_pass, p_page){
-           try {
-               var retour = { statut : "ok", message : ""};
+            try {
+                var retour = { statut : "ok", message : ""};
 
-               if((p_log == null)||(p_log == "")){
+                if((p_log == null)||(p_log == "")){
                    retour.message += "Pas d'identifiant.";
                    retour.statut = "ko";
-               }
+                }
 
-               if((p_pass == null)||(p_pass == "")){
+                if((p_pass == null)||(p_pass == "")){
                    retour.message += "Pas de mot de passe.";
                    retour.statut = "ko";
-               }
+                }
 
-               if(retour.statut == "ok"){
+                if(retour.statut == "ok"){
                     var tabInput = { login : p_log, mdp : p_pass };
                     var returns = $.functionsLib.callRest(g_urlHostServer+"API/phpsql/getAuth.php", {}, tabInput); 
                     if(returns["strErreur"] == ""){
@@ -2020,10 +2020,10 @@ function WorkerMessage(cmd, parameter) {
                     }
                }
                return retour;
-           } catch (er) {
+            } catch (er) {
                this.log(0, "ERROR($.functionsLib.login):" + er.message);
                return null;
-           }
+            }
         },
         
         /**
