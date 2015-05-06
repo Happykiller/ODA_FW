@@ -557,7 +557,7 @@ function WorkerMessage(cmd, parameter) {
     
     function _allReadyAndLoad(){
         try {
-            if(_documentReady && _windowLoad && _odaInit){
+            if(_documentReady && _odaInit){
                 $.functionsLib.ready();
             }
         } catch (er) {
