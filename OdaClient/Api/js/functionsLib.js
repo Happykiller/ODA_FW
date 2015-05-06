@@ -46,7 +46,6 @@ function WorkerMessage(cmd, parameter) {
         try {
             _trace("window.load");
             _windowLoad = true;
-            _allReadyAndLoad();
         } catch (er) {
             $.functionsLib.log(0, "ERROR(window.load):" + er.message);
         }
