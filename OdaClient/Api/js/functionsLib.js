@@ -181,71 +181,74 @@ function WorkerMessage(cmd, parameter) {
      * @name _loaded
      */
     function _loaded() {
-        //Warning
-        if (!document.querySelector || !document.addEventListener) {
-            $.functionsLib.notification("Pour profiter d'une expÃ©rience optimum, merci d'utiliser un navigateur rÃ©cent.", $.functionsLib.oda_msg_color.WARNING);
-        }
-        
-        //mobile
-        document.addEventListener("deviceready", _onDeviceReady, false);
-        
-        //Pour localstorage
-        $.functionsStorage.storageKey = "ODA__"+g_urlHostServer+"__";
-        _startRobot();
-        
-        //maintenance
-        _checkMaintenance();
-        
-        //secu
-        _checkAuthentification();
-
-        //Themitisation
-        var theme = $.functionsLib.getParameter("theme_defaut");
-
-        if((!$.functionsLib.isInArray($.functionsLib.pageName,_oda_notAuthTest))&&(_userInfo != null)){
-            //Ajoute titre page
-            var description = $.functionsLib.getter("api_tab_menu",'{"champ":"Description","type":"PARAM_STR"}','{"champ":"id","valeur":"'+id_page+'","type":"PARAM_INT"}');
-            document.title = $.functionsLib.getParameter("nom_site") + " - " + description;
-            $("#id_titre").text(description);
-            
-            //Thematisation
-            var themePerso = $.functionsLib.getter("api_tab_utilisateurs",'{"champ":"theme","type":"PARAM_STR"}','{"champ":"code_user","valeur":"'+_userInfo.code_user+'","type":"PARAM_STR"}');
-
-            if((typeof themePerso != 'undefined')&&(themePerso != '')&&(themePerso != 'notAvailable')&&(themePerso != null)&&(themePerso != "default")){
-                $('head').append('<link rel="stylesheet" href="css/themes/'+themePerso+'/jquery.mobile.theme.min.css" />');
-                $('head').append('<link rel="stylesheet" href="css/themes/'+themePerso+'/jquery.mobile.icons.min.css" />');
-            }else if((typeof theme != 'undefined')&&(theme != '')){
-                $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.theme.min.css" />');
-                $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.icons.min.css" />');
+        if(_documentReady){
+            //Warning
+            if (!document.querySelector || !document.addEventListener) {
+                    $.functionsLib.notification("Pour profiter d'une expérience optimum, merci d'utiliser un navigateur récent.", $.functionsLib.oda_msg_color.WARNING);
             }
 
-            //Le menu
-            var html = _getHtmlMenu(_userInfo.profile, $.functionsLib.pageName);
-            $("#mypanel").append(html).trigger('create');
+            //mobile
+            document.addEventListener("deviceready", _onDeviceReady, false);
 
-            //L'utilisateur en bas de page
-            var strHml = _userInfo.nom + " " + _userInfo.prenom + " (" + _userInfo.labelle + ")";
-            $("#id_affichageUser").html(strHml);
+            //Pour localstorage
+            $.functionsStorage.storageKey = "ODA__"+g_urlHostServer+"__";
+            _startRobot();
 
-            //L'aide ihm
-            if(_userInfo.montrer_aide_ihm == "1"){
-                $.functionsLib.afficheAideIhm(_userInfo.code_user);
+            //maintenance
+            _checkMaintenance();
+
+            //secu
+            _checkAuthentification();
+
+            //Themitisation
+            var theme = $.functionsLib.getParameter("theme_defaut");
+
+            if((!$.functionsLib.isInArray($.functionsLib.pageName,_oda_notAuthTest))&&(_userInfo != null)){
+                //Ajoute titre page
+                var description = $.functionsLib.getter("api_tab_menu",'{"champ":"Description","type":"PARAM_STR"}','{"champ":"id","valeur":"'+id_page+'","type":"PARAM_INT"}');
+                document.title = $.functionsLib.getParameter("nom_site") + " - " + description;
+                $("#id_titre").text(description);
+
+                //Thematisation
+                var themePerso = $.functionsLib.getter("api_tab_utilisateurs",'{"champ":"theme","type":"PARAM_STR"}','{"champ":"code_user","valeur":"'+_userInfo.code_user+'","type":"PARAM_STR"}');
+
+                if((typeof themePerso != 'undefined')&&(themePerso != '')&&(themePerso != 'notAvailable')&&(themePerso != null)&&(themePerso != "default")){
+                    $('head').append('<link rel="stylesheet" href="css/themes/'+themePerso+'/jquery.mobile.theme.min.css" />');
+                    $('head').append('<link rel="stylesheet" href="css/themes/'+themePerso+'/jquery.mobile.icons.min.css" />');
+                }else if((typeof theme != 'undefined')&&(theme != '')){
+                    $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.theme.min.css" />');
+                    $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.icons.min.css" />');
+                }
+
+                //Le menu
+                var html = _getHtmlMenu(_userInfo.profile, $.functionsLib.pageName);
+                $("#mypanel").append(html).trigger('create');
+
+                //L'utilisateur en bas de page
+                var strHml = _userInfo.nom + " " + _userInfo.prenom + " (" + _userInfo.labelle + ")";
+                $("#id_affichageUser").html(strHml);
+
+                //L'aide ihm
+                if(_userInfo.montrer_aide_ihm == "1"){
+                    $.functionsLib.afficheAideIhm(_userInfo.code_user);
+                }
+            }else{
+                if((typeof theme != 'undefined')&&(theme != '')){
+                    $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.theme.min.css" />');
+                    $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.icons.min.css" />');
+                }
             }
+
+            if($.functionsLib.pageName == "page_home.html"){
+                _messagesShow();
+            }
+
+            _trace("odaInit");
+            _odaInit = true;
+            _allReadyAndLoad();
         }else{
-            if((typeof theme != 'undefined')&&(theme != '')){
-                $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.theme.min.css" />');
-                $('head').append('<link rel="stylesheet" href="css/themes/'+theme+'/jquery.mobile.icons.min.css" />');
-            }
+            setTimeout(_loaded,_frequencyRobot);
         }
-        
-
-        if($.functionsLib.pageName == "page_home.html"){
-            _messagesShow();
-        }
-        
-        _trace("odaInit");
-        _odaInit = true;
-        _allReadyAndLoad();
     };
     
     /**
@@ -397,7 +400,7 @@ function WorkerMessage(cmd, parameter) {
                 }
             }else{
                 //session not exist
-                //si page Ã  test
+                //si page à test
                 if(!$.functionsLib.isInArray($.functionsLib.pageName,_oda_notAuthTest)){
                     //check if log by url
                     var get_usr = $.functionsLib.getParamGet("getUser");
@@ -835,7 +838,7 @@ function WorkerMessage(cmd, parameter) {
                     , type : 'GET'
                 };
                 
-                //crÃ©ation du jeton pour la secu
+                //création du jeton pour la secu
                 var session = $.functionsStorage.get("ODA-SESSION");
                 var key = null;
                 if(session != null){
@@ -954,15 +957,15 @@ function WorkerMessage(cmd, parameter) {
                         retour = this.sendFile(data, params.folder, params.name);
 
                         if(retour.code = "ok"){
-                            this.notification("Upload rÃ©ussi.", this.oda_msg_color.SUCCES);
+                            this.notification("Upload réussi.", this.oda_msg_color.SUCCES);
                         }else{
                             this.notification("Erreur upload : "+retour.message, this.oda_msg_color.ERROR);
                         }
                     }else{
-                        this.notification("Erreur pas de fichier sÃ©lectionnÃ©", this.oda_msg_color.WARNING);
+                        this.notification("Erreur pas de fichier sélectionné", this.oda_msg_color.WARNING);
                     } 
                 }else{
-                    this.notification("Erreur pas de fichier sÃ©lectionnÃ©", this.oda_msg_color.WARNING);
+                    this.notification("Erreur pas de fichier sélectionné", this.oda_msg_color.WARNING);
                 }
                 
                 return true;
@@ -1158,7 +1161,7 @@ function WorkerMessage(cmd, parameter) {
                                 this.notification(result["strErreur"],this.oda_msg_color.ERROR);
                             }
                         }else{
-                            this.notification("Mail du service non dÃ©finie.",this.oda_msg_color.ERROR);
+                            this.notification("Mail du service non définie.",this.oda_msg_color.ERROR);
                         }
                     }else{
                         this.notification("Code de s&eacute;curit&eacute; incorrect.",this.oda_msg_color.WARNING);
@@ -2230,7 +2233,7 @@ function WorkerMessage(cmd, parameter) {
                     p_fonctionRetour(event.data);
                 }, false);
 
-                // On dÃ©marre le worker en lui envoyant la commande 'init'
+                // On démarre le worker en lui envoyant la commande 'init'
                 monWorker.postMessage(new WorkerMessage('init', null));
 
                 return monWorker;
@@ -2247,7 +2250,7 @@ function WorkerMessage(cmd, parameter) {
         */
         terminateWorker : function(p_worker) {
             try {
-                // On aurait pu crÃ©er une commande 'stop' qui aurait Ã©tÃ© traitÃ©e
+                // On aurait pu créer une commande 'stop' qui aurait été traitée
                 // au sein du worker qui se serait fait hara-kiri via .close()
                 p_worker.terminate();
             } catch (er) {
