@@ -49,13 +49,16 @@ $params->typeSQL = OdaLibBd::SQL_GET_ONE;
 $retour = $ODA_INTERFACE->BD_ENGINE->reqODASQL($params);
 
 //--------------------------------------------------------------------------
-//get key
-$key = $ODA_INTERFACE->buildSession(array('code_user' => $retour->data->code_user, 'password' => $ODA_INTERFACE->inputs["mdp"]));
+if($retour->nombre == 1){
+    $key = $ODA_INTERFACE->buildSession(array('code_user' => $retour->data->code_user, 'password' => $ODA_INTERFACE->inputs["mdp"]));
 
-$retour->data->keyAuthODA = $key;
-
-//--------------------------------------------------------------------------
-$params = new \stdClass();
-$params->label = "resultat";
-$params->retourSql = $retour;
-$ODA_INTERFACE->addDataReqSQL($params);
+    $retour->data->keyAuthODA = $key;
+    
+    //--------------------------------------------------------------------------
+    $params = new \stdClass();
+    $params->label = "resultat";
+    $params->retourSql = $retour;
+    $ODA_INTERFACE->addDataReqSQL($params);
+}else{
+    $ODA_INTERFACE->dieInError("User not found.");
+}
