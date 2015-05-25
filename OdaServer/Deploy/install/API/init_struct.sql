@@ -149,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `@dbLog@`.`@prefixeDb@api_tab_utilisateurs` (
   `date_creation` datetime NOT NULL,
   `date_modif` datetime NOT NULL,
   `theme` varchar(50) NOT NULL,
+  `langue` varchar(50) NOT NULL DEFAULT 'fr',
   PRIMARY KEY (`id`),
   INDEX `index_profile` (  `profile` ),
   UNIQUE `unique_code_user` (  `code_user` )

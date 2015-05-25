@@ -16,7 +16,7 @@ $ODA_INTERFACE = new OdaLibInterface($params);
 
 //--------------------------------------------------------------------------
 $params = new SimpleObject\OdaPrepareReqSql();
-$params->sql = "select a.`id` as 'id_user', a.`code_user`, a.`nom`, a.`prenom`, a.`profile`, b.`labelle`, b.`id` as 'id_rang', a.`montrer_aide_ihm`, a.`mail`
+$params->sql = "select a.`id` as 'id_user', a.`code_user`, a.`nom`, a.`prenom`, a.`profile`, b.`labelle`, b.`id` as 'id_rang', a.`montrer_aide_ihm`, a.`mail`, a.`langue`
     from `api_tab_utilisateurs` a, `api_tab_rangs` b
     where 1=1 
     and a.profile = b.indice
