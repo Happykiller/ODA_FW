@@ -186,7 +186,7 @@ class OdaLib {
      */
     static function sendMailGun($p_params) {
         try {
-            $config = OdaConfig::getInstance();
+            $config = SimpleObject\OdaConfig::getInstance();
             
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
