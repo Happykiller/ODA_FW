@@ -9,10 +9,18 @@ require("../php/header.php");
 $params = new SimpleObject\OdaPrepareInterface();
 $params->interface = "API/phpsql/setMessagesLus";
 $params->arrayInput = array("code_user");
+$params->arrayInputOpt = array("id"=>null);
 $ODA_INTERFACE = new OdaLibInterface($params);
 
 //--------------------------------------------------------------------------
-// API/phpsql/setMessagesLus.php?milis=123450&ctrl=ok&code_user=VIS
+// API/phpsql/setMessagesLus.php?milis=123450&ctrl=ok&code_user=FRO
+
+//--------------------------------------------------------------------------
+$strFiltre = "";
+
+if($ODA_INTERFACE->inputs["id"] != null){
+    $strFiltre = " AND a.`id` = ".$ODA_INTERFACE->inputs["id"];
+}
     
 //--------------------------------------------------------------------------
 $params = new SimpleObject\OdaPrepareReqSql();
@@ -20,6 +28,7 @@ $params->sql = "INSERT INTO `api_tab_messages_lus`(`code_user`, `id_message`, `d
     Select '".$ODA_INTERFACE->inputs["code_user"]."', a.`id` , NOW()
     FROM `api_tab_messages` a
     WHERE 1=1
+    ".$strFiltre."
     AND NOT EXISTS (
         SELECT 1
         FROM  `api_tab_messages_lus` b
