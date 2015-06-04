@@ -48,7 +48,7 @@ $array_purges = array();
 if($ODA_INTERFACE->inputs["exec"] == "true"){
     //--------------------------------------------------------------------------
     // Purge api_tab_session
-    $obj_purge = new stdClass();
+    $obj_purge = new \stdClass();
     $obj_purge->table = "api_tab_session";
     $obj_purge->nb = 0;
     $obj_purge->statut = "none";
@@ -72,7 +72,7 @@ if($ODA_INTERFACE->inputs["exec"] == "true"){
 
     //--------------------------------------------------------------------------
     // Purge api_tab_transaction
-    $obj_purge = new stdClass();
+    $obj_purge = new \stdClass();
     $obj_purge->table = "api_tab_transaction";
     $obj_purge->nb = 0;
     $obj_purge->statut = "none";
@@ -94,7 +94,7 @@ if($ODA_INTERFACE->inputs["exec"] == "true"){
 
     //--------------------------------------------------------------------------
     // Purge api_tab_log
-    $obj_purge = new stdClass();
+    $obj_purge = new \stdClass();
     $obj_purge->table = "api_tab_log";
     $obj_purge->nb = 0;
     $obj_purge->statut = "none";
