@@ -9,15 +9,23 @@ require("../php/header.php");
 $params = new SimpleObject\OdaPrepareInterface();
 $params->interface = "API/phpsql/updateUser";
 $params->arrayInput = array("mail","actif", "rang", "code_user");
+$params->arrayInputOpt = array("desc"=>null);
 $ODA_INTERFACE = new OdaLibInterface($params);
 
 //--------------------------------------------------------------------------
 // API/phpsql/updateUser.php?milis=123450&code_user=VIS&mail=vis.vis@gmail.com&actif=1&rang=10
 
 //--------------------------------------------------------------------------
+$strDesc = "";
+if($ODA_INTERFACE->inputs["desc"] != NULL){
+    $strDesc = "`description` = '".$ODA_INTERFACE->inputs["desc"]."', ";
+}
+
+//--------------------------------------------------------------------------
 $params = new SimpleObject\OdaPrepareReqSql();
 $params->sql = "UPDATE `api_tab_utilisateurs`
     SET `mail` = :mail,
+    ".$strDesc."
     `actif` = :actif,
     `profile` = :rang,
     `date_modif` = NOW()
