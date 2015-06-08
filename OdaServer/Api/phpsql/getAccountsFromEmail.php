@@ -21,6 +21,7 @@ $params->sql = "SELECT `code_user`
     FROM `api_tab_utilisateurs` a
     WHERE 1=1
     AND a.`mail` = :email
+    AND a.`actif` = 1
 ;";
 $params->bindsValue = [
     "email" => $ODA_INTERFACE->inputs["email"]
